@@ -1,0 +1,37 @@
+{% extends 'recipe/base.html' %}
+{% load humanize %}
+{% block page-title %}Admin Users{% endblock %}
+{% block adminUsersSelected %}selected{% endblock %}
+{% block content %}
+    <h2 class="section-title">Admin Users</h2>
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Change Role</th>
+                <th>Delete User</th>
+            </tr>
+        </thead><!-- table header -->
+        <tbody>
+            {% for i in users %}
+                <tr>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.detail.role }}</td>
+                    <td><form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="update_user_id" value="{{ i.id }}">
+                        <button id="change-user">Change Role</button>
+                    </form></td>
+                    <td><form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="delete_user_id" value="{{ i.id }}">
+                        <button id="delete-user">Delete</button>
+                    </form></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

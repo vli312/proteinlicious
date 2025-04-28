@@ -1,0 +1,733 @@
+html, body {
+    background-color: #ffffff;
+    font-family: Helvetica, Arial, serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* header styles */
+div#title-box img {
+    max-width: 9em;
+}
+
+form#login-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+div#logged-in {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+}
+
+div#logged-in img {
+    display: inline;
+    float: left;
+    max-width: 10em;
+    margin: 0 1em 0 0;
+}
+
+div#logged-in span {
+    border: .1em solid #c5bfbf;
+    width: 70%;
+}
+
+div#logged-in button {
+    display: block;
+    margin-top: 1em;
+}
+
+nav#navbar {
+    clear: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3em;
+    color: #dddddd;
+    background-color: #638D7C;
+    width: 100%;
+    margin-top: 1em;
+}
+
+nav#navbar a {
+    padding: .7em 0 .7em 0;
+    text-align: center;
+    width: 20%;
+    color: white;
+    text-decoration: none;
+}
+
+nav#navbar a:hover {
+    background-color: #999999;
+}
+
+nav#navbar a.selected {
+    background-color: dimgrey;
+}
+
+form#search {
+    display: inline-flex;
+}
+
+nav#navbar input {
+    padding: .7em;
+}
+
+/* content styles */
+div#content {
+    clear: left;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* messaging styles */
+ul.messages {
+    font-weight: bold;
+    padding: 1em;
+    margin: 0;
+    list-style: none;
+}
+
+ul.messages li.success {
+    background-color: lightgreen;
+    padding: 1em;
+    margin: 0.25em;
+}
+
+ul.messages li.info {
+    background-color: dodgerblue;
+    padding: 1em;
+    margin: 0.25em;
+}
+
+ul.messages li.warning {
+    background-color: #ff1b1b;
+    padding: 1em;
+    margin: 0.25em;
+}
+
+#register-users {
+    margin: 0 8em 8em 8em;
+    display: flex;
+    flex-direction: column;
+}
+
+div.regdiv {
+    margin: .5em 0 .5em 0;
+}
+
+div.regdiv input {
+    margin-left: 1em;
+}
+
+#register-users .regdiv label {
+  width: 2em;
+  text-align: right;
+  margin-right: 10px;
+}
+
+#reg-submit {
+    width: 20%;
+}
+
+dl#profile-list {
+    margin: 0 8em 0 8em;
+}
+
+dt.itemDes {
+    margin: 2em 0 .5em 0;
+}
+
+dd.item {
+    margin: 0 0 2em 0;
+}
+
+div#content h2 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+a#edit {
+    margin-bottom: 1em;
+    text-decoration: none;
+    border: .15em solid #100b0b;
+    padding: .3em .5em .3em .5em;
+    float: right;
+    color: #7e7676;
+    font-size: 1em;
+}
+
+button#editsave {
+    margin-bottom: 1em;
+    text-decoration: none;
+    border: .15em solid #100b0b;
+    padding: .3em .5em .3em .5em;
+    float: right;
+    color: #7e7676;
+    font-size: 1em;
+}
+
+#editbuttons {
+    display: block;
+    justify-content: right;
+}
+
+a.editprofile {
+    margin-bottom: 10em;
+    margin-right: 15em;
+    text-decoration: none;
+    border: .15em solid #100b0b;
+    padding: .3em .5em .3em .5em;
+    float: right;
+    color: #7e7676;
+}
+
+div#content p {
+    text-align: center;
+    font-size: .9em;
+}
+
+div#content a.chickenLink {
+    display: block;
+    margin-left: 3em;
+    margin-bottom: .5em;
+    padding: .7em 0 .7em 1em;
+    text-align: left;
+    width: 20%;
+    border: .2em solid #ddd;
+    text-decoration: none;
+    color: rgba(2, 2, 2, 0.77);
+}
+
+div.recipe {
+    text-align: center;
+    border: .1em solid #ddd;
+    padding: .3em;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+div.recipe img {
+    width: 20em;
+    object-fit: cover;
+    border-radius: .3em;
+}
+
+div.recipe a {
+    text-decoration: none;
+}
+
+ul#side-tab li a {
+    padding: .5em;
+    display: block;
+    text-decoration: none;
+    border: .1em solid #1c1616;
+    color: #dddddd;
+    background-color: #638D7C;
+}
+
+ul#side-tab li a:hover {
+    background-color: #999999;
+}
+
+ul#side-tab li a.selected {
+    background-color: dimgrey;
+}
+
+/* list.html styles */
+.alert {
+    position: fixed;
+    margin-left: 10%;
+    background-color: white;
+    padding: 1em;
+    border: .15em solid #ccc;
+    text-align: center;
+    display: none;
+}
+
+div#grid {
+    display: flex;
+    flex-direction: column;
+}
+
+div#search-label label {
+    width: 100%;
+}
+
+input#second-search {
+    float: right;
+}
+
+table#table {
+    display: block;
+    overflow: auto;
+    height: 30em;
+}
+
+table#table thead th {
+    table-layout: fixed;
+}
+
+table#table th {
+    width: 18em;
+    border: .1em solid #ddd;
+    padding: .5em;
+    text-align: left;
+    background-color: #f4f4f4;
+    table-layout: fixed;
+}
+
+#table th.asc::after {
+    content: " ▲";
+}
+
+#table th.desc::after {
+    content: " ▼";
+}
+
+#table th {
+    cursor: pointer;
+}
+
+table#table td {
+    width: 18em;
+    border: .1em solid #ddd;
+    padding: .5em;
+    text-align: left;
+}
+
+/* upload content */
+div#recipe-title label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+div#recipe-title label input {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+div#ing {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea.input-box {
+    width: 90%;
+}
+
+input.input-box {
+    width: 90%;
+    height: 2em;
+}
+
+.ingredientinput {
+    width: 90%;
+    height: 1.5em;
+}
+
+button.clear {
+    float: right;
+    margin-right: 9%;
+}
+
+div#add-ingredient {
+    display: flex;
+    flex-direction: column;
+}
+
+div#upload-ing {
+    width: 91%;
+    display: flex;
+    align-items: end;
+}
+
+button#ingredients-button-add {
+    float: right;
+}
+
+div#nutrition {
+    margin-top: 30%;
+}
+
+div#nutrition-sec {
+    display: flex;
+    flex-direction: column;
+}
+
+div#nutrition h3{
+    text-align: center;
+}
+
+table#nutrition-table th {
+    flex-wrap: wrap;
+    border-bottom: .1em solid black;
+}
+tr#tr td input{
+    width: 70%;
+}
+
+tr.newtr td input{
+    width: 70%;
+}
+
+tr.trEdit td input{
+    width: 70%;
+}
+
+div#upload-nut {
+    width: 95%;
+    display: flex;
+}
+
+button#nutrition-button {
+    float: right;
+}
+div#gallery-elements {
+    display: flex;
+    flex-direction: column;
+}
+
+div#upload-gallery {
+    border: .1em solid #c5bfbf;
+    width: 90%;
+}
+
+div#upload-gal {
+    width: 91%;
+    display: flex;
+}
+
+button#gallery-button {
+    float: right;
+}
+
+div#submission {
+    clear: both;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 2%;
+}
+
+div#nutrition-sec {
+    display: flex;
+    flex-direction: column;
+}
+
+div#ins-input {
+    clear: both;
+    display: flex;
+    flex-direction: column;
+}
+
+div#upload-ins {
+    width: 91%;
+    display: flex;
+}
+
+button#instructions-button {
+    float: right;
+}
+
+div#buttons{
+    margin-top: 1%;
+}
+
+div#buttons button{
+    margin: 0 1em 0 1em;
+    font-size: large;
+}
+
+/* alternate and chickenCurry styles */
+div#favorite {
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+}
+
+div#favorite input {
+    margin-left: .5em;
+}
+
+/* ad styles */
+div#ad img {
+    margin-top: 2%;
+    height: 10em;
+    width: 100%;
+}
+
+/* ingredients and nutrition section */
+table#nutrition-table th {
+    border-bottom: .1em solid black;
+}
+tr#total td {
+    border-top: .1em solid black;
+}
+
+/* instructions section */
+div#section2 h3 {
+    text-align: center;
+}
+
+div#instruction-text p {
+    text-align: left;
+}
+
+div.paragraph p {
+    margin: .3em 0 .3em 0;
+}
+
+/* gallery and comments section */
+div#section3 h3 {
+    text-align: center;
+}
+
+img#chicken {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#comment-box {
+    border: .1em solid #070101 !important;
+    text-decoration: none;
+    text-align: left;
+}
+
+div#section3  {
+    text-align: center;
+}
+
+#register-users {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+ul#comments-list {
+    padding: 0 0 0 .8em;
+    width: 100%;
+}
+
+ul#comments-list li {
+    list-style-type: none;
+    text-align: left;
+}
+
+ul#comments-list li img {
+    display: inline;
+    float: left;
+    max-width: 1.5em;
+    margin-right: .7em;
+}
+
+ul#comments-list li p {
+    text-align: left;
+}
+.edit-comment {
+    width: 4em;
+}
+
+#comment-bottom {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+#comment-bottom input[type="text"] {
+    flex: 1;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+/* footer styles */
+div#footer {
+    position: static;
+    clear: both;
+    margin-top: 1em;
+    color: #ffffff;
+    border-top: .1em solid #ddd;
+}
+
+div#copyright {
+    margin-left: 12.5%;
+    display: block;
+    float: left;
+    width: 50%;
+    color: black;
+    font-size: small;
+}
+
+/* mobile styles */
+@media (max-width: 768px) {
+    div#header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    div#title-box h2 {
+        font-size: large;
+        display: block;
+    }
+
+    nav#navbar a {
+        font-size: small;
+    }
+
+    div.recipe-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    div.recipe a p {
+        font-size: x-large;
+    }
+
+    ul#side-tab {
+        clear: left;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+    }
+
+    table#table td {
+        font-size: small;
+    }
+
+    label#step {
+        margin-top: 1em;
+    }
+
+    div#ingredients h3{
+        text-align: center;
+    }
+
+    div#nutrition h3{
+        text-align: center;
+    }
+
+    div#ingredients{
+        margin: 10% 0 10% 0;
+    }
+
+    div#nutrition{
+        margin: 10% 0 10% 0;
+    }
+
+    div#section2{
+        margin: 10% 0 10% 0;
+    }
+
+    div#gallery {
+        margin: 10% 0 10% 0;
+    }
+
+    div#comments-section {
+        margin: 10% 0 10% 0;
+    }
+
+    div#footer {
+        display: flex;
+        flex-direction: column;
+    }
+    div#footer-nav {
+        margin-left: 12.5%;
+        margin-bottom: 10%;
+    }
+}
+
+/* browser styles */
+@media all and (min-width: 769px) {
+    div#title-box {
+        position: static;
+        float: left;
+        width: 65%;
+        margin-left: 12.5%;
+    }
+
+    div#title-box img {
+        display: inline;
+        float: left;
+        margin: 2em 1em 0 0;
+    }
+
+    div#title-box h2 {
+        font-size: large;
+        display: block;
+    }
+
+    div.recipe-grid {
+        margin-left: 5%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5%;
+    }
+
+    div.recipe a p {
+        font-size: larger;
+    }
+
+    div#tableDiv {
+        display: inline-flex;
+    }
+
+    ul#side-tab {
+        width: 8em;
+        margin-right: 1.5em;
+        list-style: none;
+    }
+
+    label#step {
+        margin-top: 10%;
+    }
+
+    button#log-in-button {
+        width: 35%;
+    }
+
+    /* alternative and chickenCurry content styles*/
+    div#section1 {
+        float: left;
+        width: 31%;
+        align-items: center;
+    }
+
+    div#ingredients h3{
+        margin-left: 20%;
+    }
+
+    div#nutrition {
+        margin-top: 30%;
+    }
+
+    div#nutrition h3{
+        margin-left: 20%;
+    }
+
+    div#section2 {
+        float: left;
+        width: 31%;
+        align-items: center;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+
+    div#section3 {
+        float: left;
+        width: 31%;
+    }
+
+    div#footer-nav {
+        margin-right: 12.5%;
+    }
+}

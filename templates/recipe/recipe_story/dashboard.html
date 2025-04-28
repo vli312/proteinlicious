@@ -1,0 +1,15 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block page-title %}Dashboard{% endblock %}
+{% block homeSelected %}selected{% endblock %}
+
+{% block content %}
+    <h2 class='section-title'>Dashboard</h2>
+    <div class="extra-padding">
+        <p>Welcome to your dashboard, <strong>{{ request.session.username }}</strong></p>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% include "actions/action/feed.html" %}
+{% endblock %}

@@ -1,0 +1,8 @@
+<h3>Recent Activity</h3>
+<ul>
+    {% for action in actions %}
+        <li><a href="{% url "users:profile" request.session.username %}">{{ action.user.username }}</a> {{ action.verb }} "<a href="{{ action.target.get_absolute_url }}">{{ action.target }}"</a> ({{ action.created }})</li>
+    {% empty %}
+        <li>No activity yet.</li>
+    {% endfor %}
+</ul>

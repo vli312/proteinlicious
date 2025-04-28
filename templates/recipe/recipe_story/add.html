@@ -1,0 +1,81 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block page-title %}Upload{% endblock %}
+{% block uploadSelected %}selected{% endblock %}
+{% block content %}
+    <h2 class='section-title'>Upload Your Recipe</h2>
+    <form id="add-news-story" action="{% url "recipe:uploadview" %}" method="POST">
+        {%  csrf_token %}
+        <div id='recipe-title'><label><input type='text' name="title" placeholder='Recipe Title' required></label></div>
+        <div id='main'>
+            <div id='section1'>
+                <div id='ingredients'>
+                    <h3>Ingredients</h3>
+                    <div id='ing'>
+                        <div><button class='clear' type='reset'>Clear</button></div>
+                        <div id='add-ingredients'>
+                            <label><input class='input-box' name="ingredients" placeholder='Insert Text Here' required></label>
+                            <div id='upload-ing'><button id='ingredients-button-minus' type='button'>-</button><button id='ingredients-button-add' type='button'>+</button></div>
+                        </div>
+                    </div>
+                </div> <!-- ingredients -->
+                <div id='nutrition'>
+                    <h3>Nutrition</h3>
+                    <div id='nutrition-sec'>
+                        <div><button class='clear' type='reset'>Clear</button></div>
+                        <table id='nutrition-table'>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Cal</th>
+                                <th>Carbs</th>
+                                <th>Fat</th>
+                                <th>Protein</th>
+                            </tr>
+                            <tr id='tr'>
+                                <td><input type='text' name="nutritionName" placeholder='Ingredient'></td>
+                                <td><input type='number' name="nutritionCal" placeholder='0'></td>
+                                <td><input type='number' name="nutritionCarb" placeholder='0'></td>
+                                <td><input type='number' name="nutritionFat" placeholder='0'></td>
+                                <td><input type='number' name="nutritionProtein" placeholder='0'></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id='upload-nut'><button id='nutrition-button-minus' type='button'>-</button><button id='nutrition-button-add' type='button'>+</button></div>
+                </div> <!-- nutrition -->
+            </div><!-- section 2 -->
+            <div id='section2'>
+                <h3>Instructions</h3>
+                <div id='instruction-text'>
+                    <div><button class='clear' type='reset'>Clear All</button></div>
+                    <br>
+                    <div id='ins-input'>
+                        <label><input class='input-box' name="source" placeholder='Protein Source' required></label>
+                        <label><input class='input-box' name="instructions" placeholder='Allergies' required></label>
+                        <label><input class='input-box' name="instructions" placeholder='Cooking Time' required></label>
+                        <label><input class='input-box' name="instructions" placeholder='Prep Time' required></label>
+                        <label id='step'><input class='input-box' name="instructions" placeholder='Step 1: Insert Text Here' required></label>
+                        <div id='upload-ins'><button id='instructions-button-minus' type='button'>-</button><button id='instructions-button-add' type='button'>+</button></div>
+                    </div>
+                </div>
+            </div><!-- section 2 -->
+            <div id='section3'>
+                <div id='gallery'>
+                    <h3>Gallery</h3>
+                    <div id='gallery-elements'>
+                        <div><button class='clear' type='reset'>Clear</button></div>
+                        <div id='upload-gallery'><input type='file' id='file-input'></div>
+                        <div id='upload-gal'><button type='button'>-</button><button id='gallery-button' type='button'>+</button></div>
+                    </div>
+                </div>
+            </div><!-- section 3 -->
+        </div>
+        <div id="submission">
+            <p><strong>All fields besides gallery must be filled! Each clear button only clears its own section.</strong></p>
+            <div id="buttons">
+                <button>Upload</button>
+                <button>Save</button>
+                <button>Reset All</button>
+            </div>
+        </div><!-- submission -->
+    </form>
+{% endblock %}

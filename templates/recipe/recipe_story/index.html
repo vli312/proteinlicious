@@ -1,0 +1,47 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block page-title %}Home{% endblock %}
+{% block homeSelected %}selected{% endblock %}
+
+{% block content %}
+    <h2 class='section-title'>Trending</h2>
+    <div class='recipe-grid'>
+        <div class='recipe'>
+            {% if request.session.username %}
+            <a><img src='{% static 'img/chickenCurry.png' %}' alt='Chicken Curry Picture'></a> <!-- https://everythingzoomer.com/lifestyle/food-drink-entertaining/2015/01/15/dish-up-curried-chicken-potatoes-carrots/ -->
+            <a><p>Golden Chicken Curry</p></a>
+            {% else %}
+            <a><img src='{% static 'img/chickenCurry.png' %}' alt='Chicken Curry Picture'></a> <!-- https://everythingzoomer.com/lifestyle/food-drink-entertaining/2015/01/15/dish-up-curried-chicken-potatoes-carrots/ -->
+            <a><p>Golden Chicken Curry</p></a>
+            {% endif %}
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/cuminBeef.jpg' %}' alt='Cumin Beef Picture'></a> <!-- https://www.seasaltwithfood.com/2009/07/beef-with-cumin.html -->
+            <a href='#'><p>Stir Fry Cumin Beef</p></a>
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/walnutShrimp.png' %}' alt='Shrimp Picture'></a> <!-- https://bakeitwithlove.com/wp-content/uploads/2017/06/Panda-Express-Honey-Walnut-Shrimp-h.jpg -->
+            <a href='#'><p>Honey Walnut Shrimp</p></a>
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/ninjaCreami.png' %}' alt='Ice Cream Picture'></a> <!-- https://georgeats.com/recipes/ninja-creami-vanilla-ice-cream-recipe/ -->
+            <a href='#'><p>Vanilla Protein Ice Cream</p></a>
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/tilapia.png' %}' alt='Tilapia Picture'></a> <!-- https://alicerecipes.com/crispy-tilapia-strips/ -->
+            <a href='#'><p>Air Fried Tilapia</p></a>
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/beefNoodle.png' %}' alt='Noodle Picture'></a> <!-- https://www.kitchenstories.com/en/recipes/braised-beef-noodle-soup-en -->
+            <a href='#'><p>Braised Beef Noodles</p></a>
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/chickenKatsu.png' %}' alt='Katsu Picture'></a> <!-- https://gimmeyummy.com/japanese-chicken-katsu-panko-crispy-chicken/ -->
+            <a href='#'><p>Panko Chicken Katsu</p></a>
+        </div>
+        <div class='recipe'>
+            <a href='#'><img src='{% static 'img/steakRoll.png' %}' alt='Roll Picture'></a> <!-- https://eatingrichly.com/summer-roll-recipe-with-vietnamese-steak/ -->
+            <a href='#'><p>Steak Summer Rolls</p></a>
+        </div>
+    </div>
+{% endblock %}

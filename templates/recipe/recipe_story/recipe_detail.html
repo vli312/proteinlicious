@@ -1,0 +1,72 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block page-title %}Logged In {{ recipe.title }}{% endblock %}
+{% block content %}
+    <h2>{{ recipe.title }}</h2>
+    <a href="{% url 'recipe:editview' recipe_id=recipe.id %}" id="edit">Edit</a>
+    <p id="info">Submitted by <a href="{% url 'users:profile' recipe.userFK.username %}">{{ recipe.userFK.username }}</a> - {{ recipe.date }}</p>
+    <div id='favorite'>
+        <p>Favorite </p>
+        <input type='checkbox'>
+    </div>
+    <div id='main'>
+        <div id='section1'>
+            <div id='ingredients'>
+                <h3>Ingredients</h3>
+                <ul>
+                    {% for ingredient in recipe.ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </div><div id='nutrition'>
+                <h3>Nutrition</h3>
+                <table id='nutrition-table'>
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Cal</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                            <th>Protein</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in recipe.nutrition %}
+                            <tr>
+                                <td>{{ i.name }}</td>
+                                <td>{{ i.calories }}</td>
+                                <td>{{ i.carbs }}</td>
+                                <td>{{ i.fat }}</td>
+                                <td>{{ i.protein }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div></div><div id='section2'>
+            <h3>Instructions</h3>
+            <div id='instruction-text'>
+                <p><strong>Overview</strong></p>
+                <div class='paragraph'>
+                    <p>Allergies: <strong>{{ recipe.instructions.0 }}</strong></p>
+                    <p>Prep: {{ recipe.instructions.1 }} mins</p>
+                    <p>Cook: {{ recipe.instructions.2 }} mins.</p>
+                </div>
+                <p><strong>Steps</strong></p>
+                <div class='paragraph'>
+                    {% for instruction in recipe.instructions %}
+                        {% if forloop.counter > 3 %}
+                            <p>{{ instruction }}</p>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id='section3'>
+            <div id='gallery'>
+                <h3>Gallery</h3>
+                <img src='{% static recipe.gallery %}'>
+            </div>
+            {% include "comments/comment/commentbox.html" %}
+        </div>
+    </div>
+{% endblock %}

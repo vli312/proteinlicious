@@ -1,0 +1,38 @@
+{% load static %}
+{% load humanize %}
+<div id='comments-section'>
+    <h3>Comments</h3>
+    <div id='comment-box'>
+        <ul id='comments-list'>
+            {% for comment in comments %}
+                <li>
+                    <img src='{% static 'img/personIcon.png' %}' alt='PersonIcon'>
+                    <p><strong><a href="{% url 'users:profile' comment.user.username %}">{{ comment.user.username }}</a></strong> - {{ comment.created | naturalday}}:</p>
+                    <p>{{ comment.text }}</p>
+                    {% if comment.user.username == request.session.username or request.session.role == 'admin'%}
+                        <form method="POST">
+                            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                            <input type="submit" name="submit" value="Edit" class="edit-comment">
+                            {% csrf_token %}
+                        </form>
+                        <form method="POST">
+                            <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                            <input type="submit" name="submit" value="Delete" id="edit-comment">
+                            {% csrf_token %}
+                        </form>
+                    {% endif %}
+                </li>
+            {% empty %}
+                <li>No comments yet</li>
+            {% endfor %}
+        </ul>
+        <form id="register-users" action="{% url 'recipe:recipe_detail_view' recipe.id %}" method="POST">
+            <div id='comment-bottom'>
+                <label for="register-lname"></label><input name="text" type="text">
+                <input type="submit" name="submit" value="Add">
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+

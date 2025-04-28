@@ -1,0 +1,60 @@
+{% extends 'recipe/base.html' %}
+{% block page-title %}List{% endblock %}
+{% block collectionSelected %}selected{% endblock %}
+{% block content %}
+    <h2 class="section-title">Collection</h2>
+    <div id="tableDiv">
+        <ul id="side-tab">
+            <li><a href="#" class="selected">Chicken</a></li>
+            <li><a href="#">Beef</a></li>
+            <li><a href="#">Pork</a></li>
+            <li><a href="#">Lamb</a></li>
+            <li><a href="#">Seafood</a></li>
+            <li><a href="#">Vegetarian</a></li>
+            <li><a href="#">Yogurt</a></li>
+            <li><a href="#">Protein Powder</a></li>
+            <li><a href="#">Gluten Free</a></li>
+            <li><a href="#">Nut Free</a></li>
+        </ul>
+        <div id="alert" class="alert">
+            <p id="alertMessage"></p>
+        </div>
+        <div id="grid">
+            <div id="search-label">
+                <label>
+                    <input id="second-search" type="text" placeholder="Search in grid">
+                </label>
+            </div>
+        {% if not stories %}
+            <p>There are no recipes right now.</p>
+        {% else %}
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Recipe</th>
+                        <th>Protein Per Serving</th>
+                        <th>Date</th>
+                        <th>User</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead><!-- table header -->
+                <tbody>
+                    {% for story in stories %}
+                        <tr>
+                            {% if request.session.username%}
+                                <td><a href="{% url 'recipe:recipe_detail_view' story.id %}">{{ story.name }}</a></td>
+                            {% else %}
+                                <td><a href="{% url 'recipe:alt_recipe_detail_view' story.id %}">{{ story.name }}</a></td>
+                            {% endif %}
+                            <td>{{ story.protein }}</td>
+                            <td>{{ story.date }}</td>
+                            <td><a href="{% url 'users:profile' story.userFK.username %}">{{ story.userFK.username }}</a></td>
+                            <td>{{ story.comments }}</td>
+                        </tr>
+                    {% endfor %} <!-- pulls data from the stories variable from models.py -->
+                </tbody>
+            </table>
+        {% endif %}
+        </div><!-- grid -->
+    </div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'recipe/base.html' %}
+{% load static %}
+{% block page-title %}Alternative Chicken Curry{% endblock %}
+{% block content %}
+    <h2>{{ story.title }}</h2>
+    <p>Submitted by <a href='{% url 'users:profile' story.userFK.username %}'>{{ story.userFK.username }}</a> - {{ story.date }}</p>
+    <div id='main'>
+        <div id='section1'>
+            <div id='ingredients'>
+                <h3>Ingredients</h3>
+                <ul>
+                    {% for i in story.ingredients %}
+                        <li>{{ i }}</li>
+                    {% endfor %}
+                </ul>
+            </div><!-- ingredients -->
+            <div id='nutrition'>
+                <h3>Nutrition</h3>
+                <table id='nutrition-table'>
+                    <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Cal</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                            <th>Protein</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in story.nutrition %}
+                            <tr>
+                                <td>{{ i.name }}</td>
+                                <td>{{ i.calories }}</td>
+                                <td>{{ i.carbs }}</td>
+                                <td>{{ i.fat }}</td>
+                                <td>{{ i.protein }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div><!-- nutrition -->
+        </div> <!-- section 1 -->
+        <div id='section2'>
+            <h3>Instructions</h3>
+            <div id='instruction-text'>
+                <p><strong>Overview</strong></p>
+                <div class='paragraph'>
+                    <p>Allergies: <strong>{{ story.instructions.0 }}</strong></p>
+                    <p>Prep: {{ story.instructions.1 }} mins</p>
+                    <p>Cook: {{ story.instructions.2 }} mins.</p>
+                </div>
+                <p><strong>Steps</strong></p>
+                <div class='paragraph'>
+                    {% for i in story.instructions %}
+                        {% if forloop.counter > 3 %}
+                            <p>{{ i }}</p>
+                        {% endif %}
+                    {% endfor %}        
+                </div>
+            </div><!-- instructions -->
+        </div><!-- section 2 -->
+        <div id='section3'>
+            <div id='gallery'>
+                <h3>Gallery</h3>
+                <img src='{% static story.gallery %}'> <!-- https://everythingzoomer.com/lifestyle/food-drink-entertaining/2015/01/15/dish-up-curried-chicken-potatoes-carrots/ -->
+            </div><!-- gallery -->
+            <div id='comments-section'>
+                <h3>Comments [3]</h3>
+                <div id='comment-box'>
+                    <ul id='comments-list'>
+                        {% for i in story.comments %}
+                            <li>
+                                 <li>
+                                    <img src='{% static 'img/personIcon.png' %}' alt='PersonIcon'> <!-- https://pta.animalia-life.club/icono-de-usuario-verde -->
+                                    <p><strong>*************</strong> - */**/**, **:** AM:</p>
+                                    <p>******************* *********************** ******************* ****************** ***********</p>
+                                </li>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <form id='alt-comment-bottom'>
+                        <input type='text' id='comment-input' name='comment-input' placeholder='Commenting is restricted to members...'>
+                        <input type='submit' id='locked' value='Go'>
+                    </form>
+                </div>
+            </div><!-- comments -->
+        </div><!-- section 3 -->
+    </div>
+{% endblock %}
