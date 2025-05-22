@@ -17,7 +17,7 @@
         <tbody>
             {% for i in users %}
                 <tr>
-                    <td>{{ i.username }}</td>
+                    <td><a href='{% url 'users:profile' i.username %}'>{{ i.username }}</a></td>
                     <td>{{ i.email }}</td>
                     <td>{{ i.detail.role }}</td>
                     <td><form method="POST">

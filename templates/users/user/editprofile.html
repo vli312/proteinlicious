@@ -7,7 +7,7 @@
         {% csrf_token %}
         <dl id="profile-list">
             <dt class="itemDes"><strong>Username</strong></dt>
-            <dd class="item"><input type='text' name="username" value="{{ user.username }}"></dd>
+            <dd class="item">{{ user.username }}</dd>
             <dt class="itemDes"><strong>Password</strong></dt>
             <dd class="item"><input type='text' name="password" value="{{ user.password }}"></dd>
             <dt class="itemDes"><strong>First Name</strong></dt>

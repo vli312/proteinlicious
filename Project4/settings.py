@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,8 @@ DEBUG = True
 
 #ALLOWED_HOSTS = ["proteinlicious.discovery.cs.vt.edu"]
 #CSRF_TRUSTED_ORIGINS=["https://datarepo.discovery.cs.vt.edu"]
-
+ALLOWED_HOSTS = ['project4-aged-wave-8030.fly.dev']
+CSRF_TRUSTED_ORIGINS = ['https://project4-aged-wave-8030.fly.dev']
 
 # File Based Session
 SESSION_ENGINE = "django.contrib.sessions.backends.file"
@@ -85,15 +87,25 @@ WSGI_APPLICATION = 'Project4.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "cs5774db",
-        "USER": "postgres",
-        "PASSWORD": "Bhalloo1473@",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
-    }
+    'default': dj_database_url.config(
+        #default=os.environ.get('DATABASE_URL', 'sqlite:///./db.sqlite3')
+        default=os.environ.get(
+            'DATABASE_URL',
+            'postgres://postgres:Bhalloo1473@127.0.0.1:5432/cs5774db'
+        )
+    )
 }
+#
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "cs5774db",
+#         "USER": "postgres",
+#         "PASSWORD": "Bhalloo1473@",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
 
 
 # DATABASES = {
@@ -139,6 +151,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

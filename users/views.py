@@ -26,7 +26,7 @@ def editprofile(request,username):
         user.detail.fname = request.POST.get('fname')
         user.detail.lname = request.POST.get('lname')
         user.detail.role = request.POST.get('role')
-        user.detail.favproteinsource = request.POST.get('favproteinsource')
+        user.detail.favproteinsource = request.POST.get('favoritesoruce')
         user.save()
         userFK = User.objects.get(username=request.session.get('username'))
         action = Action(
